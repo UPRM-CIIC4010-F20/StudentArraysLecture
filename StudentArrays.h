@@ -28,10 +28,12 @@ public:
         this->name = name;
         this->gender = gender;
         this->gpa = gpa;
+        this->emptyRecord = false;
     }
 
     StudentArrays()
     {
+        this->emptyRecord = true;
     }
 
     static string toString(StudentArrays& s)
@@ -63,6 +65,13 @@ public:
     {
         return gpa;
     }
+
+    bool getEmptyRecord()
+    {
+        return emptyRecord;
+    }
+
+    void setEmptyRecord(bool trueOrFalse) { emptyRecord = trueOrFalse; }
 
     bool equals(StudentArrays s2)
     {

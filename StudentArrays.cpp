@@ -107,15 +107,22 @@ void StudentArrays::remove(StudentArrays** v, int& size, StudentArrays s)
     if (pos == -1) return;
 
     // Student found at position pos
-    StudentArrays* temp = new StudentArrays[size-1];
-    for (int i=0; i<pos; i++) {
-        temp[i] = (*v)[i];
+    //StudentArrays* temp = new StudentArrays[size-1];
+
+    int i=pos;
+    while (i<size-1 && !(*v)[i].emptyRecord) {
+        (*v)[i] = (*v)[i+1];
+        i++;
     }
-    for (int i=pos+1; i<size; i++) {
-        temp[i-1] = (*v)[i];
-    }
-    *v = temp;
-    size = size - 1;
+    (*v)[i].setEmptyRecord(true);
+    // for (int i=0; i<pos; i++) {
+    //     temp[i] = (*v)[i];
+    // }
+    // for (int i=pos+1; i<size; i++) {
+    //     temp[i-1] = (*v)[i];
+    // }
+    // *v = temp;
+    // size = size - 1;
 
 }
 
