@@ -19,6 +19,7 @@ private:
     string name;
     Gender gender;
     float gpa;
+    bool emptyRecord;
 
 public:
     StudentArrays(const string &id, const string &name, Gender gender, double gpa)

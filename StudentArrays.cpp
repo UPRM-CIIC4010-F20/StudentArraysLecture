@@ -128,11 +128,19 @@ void StudentArrays::remove(StudentArrays** v, int& size, StudentArrays s)
  * HINT: use nested loops
  *
  */
-bool StudentArrays::containsAll(StudentArrays* v, int size, StudentArrays* v2, int v2Size)
+bool StudentArrays::containsAll(StudentArrays* v1, int size, StudentArrays* v2, int v2Size)
 {
-    //YOUR CODE HERE
-
-    return false; //dummy return
+    for(int i=0; i<v2Size; i++) {
+        bool found = false;
+        for (int j=0; j<size; j++) {
+            if (v1[j].equals(v2[i])) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) return false;
+    }
+    return true;
 }
 
 void StudentArrays::addAllStudents(StudentArrays* v, int size, StudentArrays* additionalStudents, int aSize)
@@ -173,12 +181,25 @@ int main() {
     students[3] = s4;
     students[4] = s5;
 
+    StudentArrays* students2 = new StudentArrays[4];
+    students2[0] = s1;
+    students2[1] = s2;
+    students2[2] = s3;
+    students2[3] = s4;
+   
     cout << StudentArrays::toString(students, 5) << endl;
 
     cout << "Average GPA = " << StudentArrays::getMean(students,5) << endl;
 
     int size = 5;
-    StudentArrays::remove(&students,size,s1);
+    // StudentArrays::remove(&students,size,s1);
 
     cout << StudentArrays::toString(students, size) << endl;
+
+    if (StudentArrays::containsAll(students, 5, students2, 4)) {
+        cout << "containsAll is true" << endl;
+    }
+    else {
+        cout << "containsAll is false" << endl;
+    }
 }
